@@ -1,10 +1,10 @@
-var ActivityDAO = function(){
+var ActivityEntryDAO = function(){
     this.insert = function(values, callback){
-        db.run('INSERT INTO Activite(date,description,lUtilisateur) VALUES (?,?,?);', values, callback);
+        db.run('INSERT INTO Donnee (heure,freqCard,latitude,longitude,altitude,lActivite) VALUES (?,?,?,?,?,?);', values, callback);
     };
 
     this.delete = function(values, callback){
-        db.run('DELETE FROM Activite WHERE ID = ?;', values, callback);
+        db.run('DELETE FROM Donnee WHERE ID = ?;', values, callback);
     };
 
     this.update = function(values, callback){
@@ -12,7 +12,7 @@ var ActivityDAO = function(){
     };
 
     this.findAll = function(callback){
-        db.all('SELECT * FROM Activite ORDER BY id', function(err, rows) {
+        db.all('SELECT * FROM Donnee ORDER BY heure;', function(err, rows) {
             if (err) {
                 callback(err, null);
             } else {
@@ -21,8 +21,8 @@ var ActivityDAO = function(){
         });
     };
 
-    this.findByUser = function(key, callback){
-        db.run('select * from Activite where lUtilisateur = ?', key, function(err, rows) {
+    this.findByActivity = function(key, callback){
+        db.run('select * from Donnee WHERE lActivite = ? ORDER BY id;', key, function(err, rows) {
             if (err) {
                 callback(err, null);
             } else {
