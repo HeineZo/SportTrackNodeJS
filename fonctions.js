@@ -13,20 +13,20 @@ function calculDistance2PointsGPS(latitude1, longitude1,latitude2,longitude2){
   let distance = earthRadius * c;
 
   return distance;
-}
+};
 
 function degrees_to_radians(degrees){
   let pi = Math.PI;
   return degrees * (pi/180);
-}
+};
 
 function calculDistanceTrajet(lActivity){
   let ret = 0;
   for (let i = 0; i < lActivity.data.length - 1;i++){
     ret += calculDistance2PointsGPS(lActivity.data[i].latitude,lActivity.data[i].longitude,lActivity.data[i+1].latitude,lActivity.data[i+1].longitude);
-  }
+  };
   return ret;
-}
+};
 
 let obj ={
   activity:{

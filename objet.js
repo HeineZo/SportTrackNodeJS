@@ -1,10 +1,10 @@
 function CalculDistance(){
-}
+};
 
 CalculDistance.prototype.degreesToRadians = function(degrees){
     let pi = Math.PI;
     return degrees * (pi/180);
-}
+};
 
 CalculDistance.prototype.calculDistance2PointsGPS = function(latitude1, longitude1,latitude2,longitude2) {
     let lat1 = Number(latitude1);
@@ -21,7 +21,7 @@ CalculDistance.prototype.calculDistance2PointsGPS = function(latitude1, longitud
     let distance = earthRadius * c;
     
     return distance;
-}
+};
 
 CalculDistance.prototype.calculDistanceTrajet = function(lActivity){
     let ret = 0;
@@ -29,7 +29,7 @@ CalculDistance.prototype.calculDistanceTrajet = function(lActivity){
             ret += this.calculDistance2PointsGPS(lActivity.data[i].latitude,lActivity.data[i].longitude,lActivity.data[i+1].latitude,lActivity.data[i+1].longitude);
         }
     return ret;
-}
+};
 
 let instance = new CalculDistance();
 
