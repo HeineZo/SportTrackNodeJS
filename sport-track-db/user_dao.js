@@ -4,23 +4,31 @@ const UserDAO = function(){
     this.insert = function(values, callback){
         db.run('INSERT INTO Utilisateur(nom,prenom,dateDeNaissance,sexe,taille,poids,email,motDePasse) VALUES(?,?,?,?,?,?,?,?)', values, function(err) {
             if (err) {
-                callback(err);
+                console.log(err);
             } else {
-                callback("Insertion réussie à la ligne "+this.lastID);
+                console.log("Insertion réussie à la ligne "+this.lastID);
+                callback();
             }
         });
     };
 
     this.update = function(key, values, callback){
-        db.run('update Utilisateur set nom = ?, prenom = ?, dateDeNaissance = ?, sexe = ?, taille = ?, poids = ?, email = ?, motDePasse = ? where id = ?', [...values, key], callback);
+        db.run('update Utilisateur set nom = ?, prenom = ?, dateDeNaissance = ?, sexe = ?, taille = ?, poids = ?, email = ?, motDePasse = ? where id = ?', [...values, key], (err) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log("Modification réussie à la ligne "+key);
+                callback();
+            }
+        });
     };
 
     this.delete = function(key, callback){
         db.run('delete from Utilisateur where id = ?;', key, (err) => {
             if (err) {
-                callback(err);
+                console.log(err);
             } else {
-                callback();
+                console.log("Suppression réussie");
             }
         }); 
     };
@@ -36,11 +44,11 @@ const UserDAO = function(){
     };
 
     this.findByKey = function(key, callback){
-        db.run('select * from Utilisateur where id = ?', key, (err, data) => {
+        db.all('select * from Utilisateur where id = ?', key, (err, data) => {
             if (err) {
                 console.log(err);
             } else {
-                callback(data);
+                console.log(data);
             }
         });
     };
