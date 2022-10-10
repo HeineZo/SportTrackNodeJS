@@ -1,8 +1,14 @@
-var db = require('./sqlite_connection');
+const db = require('./sqlite_connection');
 
-var UserDAO = function(){
+const UserDAO = function(){
     this.insert = function(values, callback){
-        db.run('INSERT INTO Utilisateur(nom,prenom,dateDeNaissance,sexe,taille,poids,email,motDePasse) VALUES(?,?,?,?,?,?,?,?)', values, callback);
+        db.run('INSERT INTO Utilisateur(nom,prenom,dateDeNaissance,sexe,taille,poids,email,motDePasse) VALUES(?,?,?,?,?,?,?,?)', values, function(err) {
+            if (err) {
+                callback(err);
+            } else {
+                callback("Insertion réussie à la ligne "+this.lastID);
+            }
+        });
     };
 
     this.update = function(key, values, callback){
@@ -10,15 +16,21 @@ var UserDAO = function(){
     };
 
     this.delete = function(key, callback){
-        db.run('delete from Utilisateur where id = ?;', key, callback); 
+        db.run('delete from Utilisateur where id = ?;', key, (err) => {
+            if (err) {
+                callback(err);
+            } else {
+                callback(null);
+            }
+        }); 
     };
 
     this.findAll = function(callback){
-        db.all('select * from Utilisateur order by id', function(err, rows) {
+        let rows = db.all('select * from Utilisateur order by id', (err) => {
             if (err) {
-                callback(err, null);
+                console.log(err);
             } else {
-                callback(err, rows);
+                callback(rows);
             }
         });
     };
@@ -26,12 +38,12 @@ var UserDAO = function(){
     this.findByKey = function(key, callback){
         db.run('select * from Utilisateur where id = ?', key, function(err, rows) {
             if (err) {
-                callback(err, null);
+                callback(err);
             } else {
-                callback(rows[0]);
+                callback(rows);
             }
         });
     };
 };
-var dao = new UserDAO();
+const dao = new UserDAO();
 module.exports = dao;
