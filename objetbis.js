@@ -1,34 +1,34 @@
-class CalculDistance{
-  calculDistance2PointsGPS(latitude1, longitude1,latitude2,longitude2){
-    let lat1 = Number(latitude1);
-    let long1 = Number(longitude1);
-    let lat2 = Number(latitude2);
-    let long2 = Number(longitude2);
+let CalculDistance = function (){
+  this.calculDistance2PointsGPS = function(latitude1, longitude1,latitude2,longitude2){
+      let lat1 = Number(latitude1);
+      let long1 = Number(longitude1);
+      let lat2 = Number(latitude2);
+      let long2 = Number(longitude2);
 
-    let earthRadius = 6371000; // Terre = sphère de 6371km de rayon
-    let dLat = this.degreesToRadians(lat2 - lat1);
-    let dLong = this.degreesToRadians(long2 - long1);
+      let earthRadius = 6371000; // Terre = sphère de 6371km de rayon
+      let dLat = this.degreesToRadians(lat2 - lat1);
+      let dLong = this.degreesToRadians(long2 - long1);
 
-    let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(this.degreesToRadians(lat1)) * Math.cos(this.degreesToRadians(lat2)) * Math.sin(dLong / 2) * Math.sin(dLong / 2);
-    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
-    let distance = earthRadius * c;
+      let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(this.degreesToRadians(lat1)) * Math.cos(this.degreesToRadians(lat2)) * Math.sin(dLong / 2) * Math.sin(dLong / 2);
+      let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
+      let distance = earthRadius * c;
 
-    return distance;
-  }
+      return distance;
+  };
 
-  degreesToRadians(degrees){
-    let pi = Math.PI;
-    return degrees * (pi/180);
-  }
+  this.degreesToRadians=function(degrees){
+      let pi = Math.PI;
+      return degrees * (pi/180);
+  };
 
-  calculDistanceTrajet(lActivity){
+  this.calculDistanceTrajet=function(lActivity){
     let ret = 0;
     for (let i = 0; i < lActivity.data.length - 1;i++){
       ret += this.calculDistance2PointsGPS(lActivity.data[i].latitude,lActivity.data[i].longitude,lActivity.data[i+1].latitude,lActivity.data[i+1].longitude);
     }
     return ret;
-  }
-}
+  };
+};
 
 let instance = new CalculDistance();
 

@@ -12,7 +12,7 @@ const UserDAO = function(){
     };
 
     this.update = function(key, values, callback){
-        db.run('update Utilisateur set nom = ?, prenom = ?, dateDeNaissance = ?, sexe = ?, taille = ?, poids = ?, email = ?, motDePasse = ? where id = ?', [values, key], callback);
+        db.run('update Utilisateur set nom = ?, prenom = ?, dateDeNaissance = ?, sexe = ?, taille = ?, poids = ?, email = ?, motDePasse = ? where id = ?', [...values, key], callback);
     };
 
     this.delete = function(key, callback){
