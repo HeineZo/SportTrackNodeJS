@@ -20,27 +20,27 @@ const UserDAO = function(){
             if (err) {
                 callback(err);
             } else {
-                callback(null);
+                callback();
             }
         }); 
     };
 
     this.findAll = function(callback){
-        let rows = db.all('select * from Utilisateur order by id', (err) => {
+        db.all('select * from Utilisateur order by id', (err, data) => {
             if (err) {
                 console.log(err);
             } else {
-                callback(rows);
+                callback(data);
             }
         });
     };
 
     this.findByKey = function(key, callback){
-        db.run('select * from Utilisateur where id = ?', key, function(err, rows) {
+        db.run('select * from Utilisateur where id = ?', key, function(err, data) {
             if (err) {
                 callback(err);
             } else {
-                callback(rows);
+                callback(data);
             }
         });
     };
