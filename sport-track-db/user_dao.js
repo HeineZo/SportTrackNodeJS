@@ -30,15 +30,15 @@ const UserDAO = function(){
             if (err) {
                 console.log(err);
             } else {
-                callback(data);
+                console.log(data);
             }
         });
     };
 
     this.findByKey = function(key, callback){
-        db.run('select * from Utilisateur where id = ?', key, function(err, data) {
+        db.run('select * from Utilisateur where id = ?', key, (err, data) => {
             if (err) {
-                callback(err);
+                console.log(err);
             } else {
                 callback(data);
             }

@@ -31,5 +31,5 @@ var ActivityEntryDAO = function(){
         });
     };
 }
-let dao = new ActivityDAO();
+let dao = new ActivityEntryDAO();
 module.exports = dao;
