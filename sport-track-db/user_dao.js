@@ -6,8 +6,8 @@ const UserDAO = function(){
             if (err) {
                 console.log(err);
             } else {
-                console.log("Insertion réussie à la ligne "+this.lastID);
-                callback();
+                console.log("Insertion de l'utilisateur réussie à la ligne "+this.lastID);
+                callback(this.lastID);
             }
         });
     };
@@ -38,7 +38,7 @@ const UserDAO = function(){
             if (err) {
                 console.log(err);
             } else {
-                console.log(data);
+                callback(data);
             }
         });
     };
@@ -49,6 +49,7 @@ const UserDAO = function(){
                 console.log(err);
             } else {
                 console.log(data);
+                callback(data);
             }
         });
     };
