@@ -1,0 +1,25 @@
+.button {
+    background-image: linear-gradient(to right, #ff8177 0%, #FFB1AC 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 0px solid #FFB1AC;
+    padding: 15px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s cubic-bezier(0.470, 0.000, 0.745, 0.715);
+    border: none;
+    cursor: pointer;
+}
+    .button:hover {
+        border: 2px solid #FFB1AC;
+        transition: all 0.3s cubic-bezier(0.470, 0.000, 0.745, 0.715);
+        box-shadow: -1px 1px #FFB1AC, -2px 2px #FFB1AC, -3px 3px #FFB1AC, -4px 4px #FFB1AC, -5px 5px #FFB1AC, -6px 6px #FFB1AC, -7px 7px #FFB1AC, -8px 8px #FFB1AC;
+        transform: translateX(8px) translateY(-8px);
+    }

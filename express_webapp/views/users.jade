@@ -3,6 +3,7 @@ html
     head
         title= title
         link(href='/stylesheets/form.css', rel='stylesheet')
+        script(src="https://kit.fontawesome.com/bdaa21e6ed.js" crossorigin="anonymous" defer)
     body
         .main
             div(class="form-container basic") 
@@ -10,6 +11,26 @@ html
                     input(type="text" id="nom" name="nom" class="input" placeholder=" " autocomplete="off" autofocus)
                     label(for="nom") Nom
                 .form-group
+                    input(type="text" id="prenom" name="prenom" value=""class="input" placeholder=" " autocomplete="off")
+                    label(for="prenom") Prénom
+                .form-group
+                    input(type="email" id="email" class="input" name="email" placeholder=" " autocomplete="off")
+                    label(for="email") 
+                        i(class="fa-solid fa-envelope") E-mail
+                .form-group
+                    input(type="password" id="password" class="input" name="motDePasse" minlength="8" required placeholder=" " autocomplete="off")
+                    label(for="motDePasse") 
+                        i(class="fa-solid fa-lock") Mot de passe
+                //- .form-group
+                //-     input(type="text" id="nom" name="nom" class="input" placeholder=" " autocomplete="off" autofocus)
+                //-     label(for="nom") Nom
+                //- .form-group
+                //-     input(type="text" id="nom" name="nom" class="input" placeholder=" " autocomplete="off" autofocus)
+                //-     label(for="nom") Nom
+                //- .form-group
+                //-     input(type="text" id="nom" name="nom" class="input" placeholder=" " autocomplete="off" autofocus)
+                //-     label(for="nom") Nom
+                //- .form-group                
 
 
 

@@ -1,0 +1,56 @@
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.title {
+    font-size: clamp(60px, 4vw, 70px);
+    text-decoration: none;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(to right, #ff8177 0%, #FFB1AC 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+    text-align: center;
+    font-style : italic;
+    font-weight : bold;
+    padding: 10px;
+}
+
+.span-container {
+    position: relative;
+    display: flex;
+    direction: rtl;
+    flex-direction: column;
+    justify-content: center;
+    width: clamp(40px, 2vw, 60px);
+    margin: 5px 5px 0px 0px;
+}
+.span-container span {
+    background-image: linear-gradient(to right, #ff8177 0%, #FFB1AC 0%, #ff8c7f 21%, #f99185 52%);
+    height: 6px;
+    margin: 5px 0 5px 0;
+    border-radius: 30px;
+    transition: all 1s ease;
+    user-select: none;
+}
+
+
+span[id="1"], span[id="3"]{
+    animation: out 1s ease-in 0.5s, in 1s ease-out 1.5s;
+}
+span[id="2"]{
+    animation: out 1s ease-in 0.7s, in 1s ease-out 1.7s;
+}
+
+.span-container span:nth-child(2) {
+    width: 70%;
+    right: 100%;
+}
+

@@ -1,0 +1,56 @@
+.main {
+    width: clamp(50%, 5vw ,80%);
+}
+.head-form {
+    height: 20%;
+}
+form {
+    flex-direction: row;
+    width: 80%;
+}
+.form-container {
+    justify-content: start;
+}
+.form-group {
+    margin: 2vw 0 1vw 0;
+}
+
+.button-container {
+    position: absolute;
+    bottom: 5%;
+}
+
+.cancel {
+    font-size: 15px;
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    cursor: pointer;
+    color: #BF4342;
+    padding: 10px;
+    text-decoration: none;
+    border: 2px solid #BF4342;
+    border-radius: 10px;
+    transition: ease-in-out 0.2s;
+
+}
+.cancel:hover {
+    background-color: #BF4342;
+    color: white;
+    transition: ease-in-out 0.2s;
+}
+
+
+.personal {
+    display: flex;
+}
+
+@media screen and (max-width: 1000px) {
+    .main {
+        width: 95%;
+        height: 90%;
+    }
+    .form-group {
+        margin: 4vw 0 3vw 0;
+    }
+}
