@@ -1,23 +1,27 @@
 doctype html
-    html
-        head
-            title= title
-            link(rel='stylesheet', href='/stylesheets/style.css')
-        body
-            table(border='1')
-                thead
+html
+    head
+        title= title
+        link(href='/stylesheets/style.css', rel='stylesheet')
+    body
+        table(border='1')
+            thead
+                tr
+                    th Nom
+                    th Prénom
+                    th Date de naissance
+                    th Sexe
+                    th Taille
+                    th Poids
+                    th Email
+            tbody
+                each user in data
                     tr
-                        th Nom
-                        th Prénom
-                        th Date de naissance
-                        th Taille
-                        th Taille
-                        th Poids
-                        th Email
-                tbody
-                    each val in data
-                     tr
-                        td= val.id
-                        td= val.description
-                        td= val.date_creation
-                        td= val.distance
+                        td= user.nom
+                        td= user.prenom
+                        td= user.dateDeNaissance
+                        td= user.sexe
+                        td= user.taille
+                        td= user.poids
+                        td= user.email
+

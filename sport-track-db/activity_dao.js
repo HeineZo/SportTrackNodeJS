@@ -1,4 +1,4 @@
-const db = require('./sqlite_connection');
+let db = require('./sqlite_connection');
 
 const ActivityDAO = function(){
     // Check
