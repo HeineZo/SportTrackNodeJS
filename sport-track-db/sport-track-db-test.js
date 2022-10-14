@@ -3,7 +3,7 @@ const activities = require('./sport-track-db').activity_dao;
 const activities_entry = require('./sport-track-db').activity_entry_dao;
 
 console.log('\n --- Partie utilisateur --- \n');
-user.findAll((data) => {
+user.findAll(function(data) {
     if (data.length > 0) {
         for (result of data) {
             user.delete(result.id);
