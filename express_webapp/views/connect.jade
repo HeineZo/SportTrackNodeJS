@@ -1,7 +1,7 @@
 extends layout
 block content
     link(href='/stylesheets/button.css', rel='stylesheet')
-    link(href='/stylesheets/index.css', rel='stylesheet')
+    link(href='/stylesheets/form.css', rel='stylesheet')
     link(rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" defer)
     script(type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js")
     script(src="https://kit.fontawesome.com/bdaa21e6ed.js" crossorigin="anonymous" defer)
@@ -17,16 +17,18 @@ block content
                     .form-group
                         input(type="email" id="email" class="input" name="email" placeholder=" " autocomplete="off")
                         label(for="email") 
-                            i(class="fa-solid fa-envelope") E-mail
+                            i(class="fa-solid fa-envelope") 
+                            a  E-mail
 
                     .form-group
                         input(type="password" id="password" class="input" name="motDePasse" minlength="8" required placeholder=" " autocomplete="off")
                         label(for="password") 
-                            i(class="fa-solid fa-lock") Mot de passe
+                            i(class="fa-solid fa-lock") 
+                            a  Mot de passe
 
                     button(type="submit" class="button") C'est parti 
                         i(class="fa-solid fa-person-running")
 
                     .connect-link
                         p Pas inscrit ? 
-                            a(href="/user_add" class="already") Inscrivez-vous
+                            a(href="/users" class="already") Inscrivez-vous
