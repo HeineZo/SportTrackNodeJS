@@ -3,34 +3,71 @@ html
     head
         title= title
         link(href='/stylesheets/form.css', rel='stylesheet')
+        link(href='/stylesheets/button.css', rel='stylesheet')
+        link(rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" defer)
+        script(type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js")
         script(src="https://kit.fontawesome.com/bdaa21e6ed.js" crossorigin="anonymous" defer)
+        script(src="/js/inscription.js" crossorigin="anonymous" defer)
     body
         .main
-            div(class="form-container basic") 
-                .form-group
-                    input(type="text" id="nom" name="nom" class="input" placeholder=" " autocomplete="off" autofocus)
-                    label(for="nom") Nom
-                .form-group
-                    input(type="text" id="prenom" name="prenom" value=""class="input" placeholder=" " autocomplete="off")
-                    label(for="prenom") Prénom
-                .form-group
-                    input(type="email" id="email" class="input" name="email" placeholder=" " autocomplete="off")
-                    label(for="email") 
-                        i(class="fa-solid fa-envelope") E-mail
-                .form-group
-                    input(type="password" id="password" class="input" name="motDePasse" minlength="8" required placeholder=" " autocomplete="off")
-                    label(for="motDePasse") 
-                        i(class="fa-solid fa-lock") Mot de passe
-                //- .form-group
-                //-     input(type="text" id="nom" name="nom" class="input" placeholder=" " autocomplete="off" autofocus)
-                //-     label(for="nom") Nom
-                //- .form-group
-                //-     input(type="text" id="nom" name="nom" class="input" placeholder=" " autocomplete="off" autofocus)
-                //-     label(for="nom") Nom
-                //- .form-group
-                //-     input(type="text" id="nom" name="nom" class="input" placeholder=" " autocomplete="off" autofocus)
-                //-     label(for="nom") Nom
-                //- .form-group                
+            .head-form
+                a(href="/main")
+                    img(src="/img/logo.svg")
+                h1 S'inscrire
+                
+
+            form(method='post' action='/users')
+                div(class="form-container basic") 
+                    .form-group
+                        input(type="text" id="nom" name="nom" class="input" placeholder=" " autocomplete="off" autofocus)
+                        label(for="nom") Nom
+                    .form-group
+                        input(type="text" id="prenom" name="prenom" value="" class="input" placeholder=" " autocomplete="off")
+                        label(for="prenom") Prénom
+                    .form-group
+                        input(type="email" id="email" class="input" name="email" placeholder=" " autocomplete="off")
+                        label(for="email") 
+                            i(class="fa-solid fa-envelope") 
+                            a  E-mail
+                    .form-group
+                        input(type="password" id="password" class="input" name="motDePasse" minlength="8" required placeholder=" " autocomplete="off")
+                        label(for="password") 
+                            i(class="fa-solid fa-lock") 
+                            a  Mot de passe
+                    a(onclick='next()' class="button") Suivant
+                    .connect-link
+                        p Déjà inscrit ? 
+                            a(href="/connect" class="already") Connectez-vous
+
+                div(class="form-container personal") 
+                    .form-group
+                        input(type="date" id="dateDeNaissance" class="input" name="dateDeNaissance")
+                        label(for="dateDeNaissance") Nom
+                    .form-group
+                        select(type=text class="input dropdown" name="sexe"  placeholder=" ")
+                            option(value="Homme") Homme
+                            option(value="Femme") Femme
+                            option(value="Non genré") Non genré
+                        label(for="sexe")
+                            i(class="fa-solid fa-venus-mars") 
+                            a Sexe
+                    .form-group
+                        input(type="number" id="taille" class="input" name="taille" min="0" placeholder=" ")
+                        label(for="taille")
+                            i(class="fa-solid fa-ruler-vertical") 
+                            a  Taille (cm)
+                    .form-group
+                        input(type="number" id="poids" class="input" name="poids" min="0" placeholder=" ")
+                        label(for="poids")
+                            i(class="fa-solid fa-weight-scale")
+                            a  Poids (kg)
+
+                    button(type="submit" class="button") 
+                        a C'est parti 
+                        i(class="fa-solid fa-person-running")
+                    div(onclick='previous()' class="back")
+                        i(class="fa-solid fa-arrow-left") 
+                        a  Retour  
 
 
 

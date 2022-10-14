@@ -1,0 +1,11 @@
+<svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2884.11 1669.8">
+<defs>
+    <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#FFB1AC"/>
+        <stop offset="21%" stop-color="#ff8c7f"/>
+        <stop offset="52%" stop-color="#f99185"/>
+        <stop offset="90%" stop-color="#cf556c"/>
+        <stop offset="100%" stop-color="#b12a5b"/>
+    </linearGradient>
+</defs>
+<path class="cls-1" fill="url(#linear)" d="M993.3,823.47H545.47c-26.54,0-48.06,33.45-48.06,74.7s21.52,74.69,48.06,74.69h554.89C1056.23,923.37,1020.85,873.36,993.3,823.47Z" transform="translate(-32.11 -63.27)"/><path class="cls-1" fill="url(#linear)" d="M1965,1733.07l-718.54-718.54C650.28,418.38,1368.81-300.15,1965,296c611.5-611.5,1330,107,718.53,718.54Z" transform="translate(-32.11 -63.27)"/><path class="cls-1" fill="url(#linear)" d="M1166.3,1273.42H109a74.69,74.69,0,0,0,0,149.38H1258.43c16.1,0,30.2-6.19,42.4-14.86Z" transform="translate(-32.11 -63.27)"/><path class="cls-1" fill="url(#linear)" d="M968.67,320.83H106.8a74.7,74.7,0,0,0,0,149.39H920.69A469.11,469.11,0,0,1,968.67,320.83Z" transform="translate(-32.11 -63.27)"/></svg>

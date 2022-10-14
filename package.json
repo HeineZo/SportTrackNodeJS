@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "express-generator": "^4.16.1"
+    "express-generator": "^4.16.1",
+    "sqlite3": "^5.1.2"
   }
 }
