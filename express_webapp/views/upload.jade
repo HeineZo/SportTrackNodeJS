@@ -1,0 +1,34 @@
+extends layout
+block content
+    link(href='/stylesheets/title.css', rel='stylesheet')
+    link(href='/stylesheets/upload.css', rel='stylesheet')
+    link(rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" defer)
+    script(type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js")
+    script(src="https://kit.fontawesome.com/bdaa21e6ed.js" crossorigin="anonymous" defer)
+    body
+        .main
+            .head-form
+                a(href="/")
+                    img(src="/img/logo.svg" alt="logo")
+                h1 Se connecter 
+
+            form(method='post' action='/connect')
+                div(class="basic form-container")
+                    .form-group
+                        input(type="email" id="email" class="input" name="email" placeholder=" " autocomplete="off")
+                        label(for="email") 
+                            i(class="fa-solid fa-envelope") 
+                            a  E-mail
+
+                    .form-group
+                        input(type="password" id="password" class="input" name="motDePasse" minlength="8" required placeholder=" " autocomplete="off")
+                        label(for="password") 
+                            i(class="fa-solid fa-lock") 
+                            a  Mot de passe
+
+                    button(type="submit" class="button") C'est parti 
+                        i(class="fa-solid fa-person-running")
+
+                    .connect-link
+                        p Pas inscrit ? 
+                            a(href="/users" class="already") Inscrivez-vous
