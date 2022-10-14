@@ -1,5 +1,20 @@
 extends layout
-
 block content
-  h1= title
-  p Welcome to #{title}
+    link(href='/stylesheets/title.css', rel='stylesheet')
+    link(href='/stylesheets/button.css', rel='stylesheet')
+    link(href='/stylesheets/index.css', rel='stylesheet')
+    link(rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" defer)
+    script(type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js")
+    script(src="https://kit.fontawesome.com/bdaa21e6ed.js" crossorigin="anonymous" defer)
+    script(src="/js/inscription.js" crossorigin="anonymous" defer)
+    body
+      .title-container
+          .span-container
+              span(id="1")
+              span(id="2")
+              span(id="3")
+          a(class='title') SportTrack
+      .main
+          a(href="/users" class="button") Commencer l'expérience 
+            i(class="fa-solid fa-arrow-right")
+
