@@ -7,4 +7,13 @@ router.get('/', function(req, res, next) {
             res.render('users', {data:rows});
     });
 });
+
+router.post('/', (req, res, next) => {
+    user_dao.findAll(function(rows) {
+        for (let i=0; i < rows.length;i++) {
+            console.log(rows[i].email);
+        };
+    });
+});
+
 module.exports = router;
