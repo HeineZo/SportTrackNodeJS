@@ -1,0 +1,72 @@
+extends layout
+block content
+    link(href='/stylesheets/button.css', rel='stylesheet')
+    link(href='/stylesheets/form.css', rel='stylesheet')
+    link(href='/stylesheets/user_update.css', rel='stylesheet')
+    script(src="https://kit.fontawesome.com/bdaa21e6ed.js" crossorigin="anonymous" defer)
+    script(src="https://kit.fontawesome.com/bdaa21e6ed.js" crossorigin="anonymous" defer)
+    body
+        script.
+            const date = document.getElementById('dateDeNaissance');
+            date.max = new Date().toISOString().split("T")[0];
+
+        .main
+            .head-form
+                a(href="/upload")
+                    img(src="../media/img/logo.svg" alt="logo")
+
+                h1 Modifier
+
+            form(method='post' action='/user_update')
+                div(class="basic form-container")
+                    .form-group
+                        input(type="text" id="nom" name="nom" class="input" placeholder=" " value="<?php echo $nom; ?>" autocomplete="off" autofocus)
+                        label(for="nom") Nom
+
+                    .form-group
+                        input(type="text" id="prenom" name="prenom" class="input" placeholder=" " value="<?php echo $prenom; ?>" autocomplete="off")
+                        label(for="prenom") Prénom
+
+                    .form-group
+                        input(type="email" id="email" class="input" name="email" placeholder=" " value="<?php echo $email; ?>" autocomplete="off")
+                        label(for="email")
+                            i(class="fa-solid fa-envelope")
+                            a  E-mail
+
+                    .form-group
+                        input(type="password" id="password" class="input" name="motDePasse" minlength="8" placeholder=" " autocomplete="off")
+                        label(for="password")
+                            i(class="fa-solid fa-lock") 
+                            a  Mot de passe
+    
+                div(class="personal form-container")
+                    .form-group
+                        input(type="date" id="dateDeNaissance" class="input" name="dateDeNaissance" value="<?php echo $birthday; ?>")
+                        label(for="dateDeNaissance") Date de naissance
+
+                   .form-group
+                        select(type=text class="input dropdown" name="sexe" value="" placeholder=" ")
+                            option(value="Homme") Homme
+                            option(value="Femme") Femme
+                            option(value="Non genré") Non genré
+                        label(for="sexe")
+                            i(class="fa-solid fa-venus-mars") 
+                            a Sexe
+
+                    .form-group
+                        input(type="number" id="taille" class="input" name="taille" min="0" value="<?php echo $taille; ?>" placeholder=" ")
+                        label(for="taille")
+                            i(class="fa-solid fa-ruler-vertical")
+                            a  Taille (cm)
+
+                    .form-group
+                        input(type="number" id="poids" class="input" name="poids" min="0" value="<?php echo $poids; ?>" placeholder=" ")
+                        label(for="poids")
+                            i(class="fa-solid fa-weight-scale")
+                            a  Poids (kg)
+
+                .button-container
+                    button(type="submit" class="button") Mettre à jour 
+                        i(class="fa-solid fa-arrow-up")
+
+            a(href='/upload' class="cancel") Annuler
