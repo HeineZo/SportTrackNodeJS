@@ -20,7 +20,7 @@ router.post('/', (req, res, next) => {
     if(uq){
         user_dao.insert([req.body.nom,req.body.prenom,req.body.dateDeNaissance,req.body.sexe,req.body.taille,req.body.poids,req.body.email,req.body.motDePasse], () => {});
     };
-    res.render('users',{});
+    res.render('users');
 });
 
 module.exports = router;
