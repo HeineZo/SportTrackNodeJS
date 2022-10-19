@@ -1,48 +1,70 @@
-function calculDistance2PointsGPS(latitude1, longitude1,latitude2,longitude2){
-  let lat1 = Number(latitude1);
-  let long1 = Number(longitude1);
-  let lat2 = Number(latitude2);
-  let long2 = Number(longitude2);
+class Fonctions{
+  calculDistance2PointsGPS(latitude1, longitude1,latitude2,longitude2){
+    let lat1 = Number(latitude1);
+    let long1 = Number(longitude1);
+    let lat2 = Number(latitude2);
+    let long2 = Number(longitude2);
 
-  let earthRadius = 6371000; // Terre = sphère de 6371km de rayon
-  let dLat = degrees_to_radians(lat2 - lat1);
-  let dLong = degrees_to_radians(long2 - long1);
+    let earthRadius = 6371000; // Terre = sphère de 6371km de rayon
+    let dLat = this.degrees_to_radians(lat2 - lat1);
+    let dLong = this.degrees_to_radians(long2 - long1);
 
-  let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(degrees_to_radians(lat1)) * Math.cos(degrees_to_radians(lat2)) * Math.sin(dLong / 2) * Math.sin(dLong / 2);
-  let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
-  let distance = earthRadius * c;
+    let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(this.degrees_to_radians(lat1)) * Math.cos(this.degrees_to_radians(lat2)) * Math.sin(dLong / 2) * Math.sin(dLong / 2);
+    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
+    let distance = earthRadius * c;
 
-  return distance;
-};
-
-function degrees_to_radians(degrees){
-  let pi = Math.PI;
-  return degrees * (pi/180);
-};
-
-function calculDistanceTrajet(lActivity){
-  let ret = 0;
-  for (let i = 0; i < lActivity.data.length - 1;i++){
-    ret += calculDistance2PointsGPS(lActivity.data[i].latitude,lActivity.data[i].longitude,lActivity.data[i+1].latitude,lActivity.data[i+1].longitude);
+    return distance;
   };
-  return ret;
-};
 
-function moyenneFreqCard(freqCard) {
-  let sum = 0;
-  for (let i = 0; i < freqCard.length; i++) {
-    sum = sum + freqCard[i];
+  degrees_to_radians(degrees){
+    let pi = Math.PI;
+    return degrees * (pi/180);
+  };
+
+  calculDistanceTrajet(lActivity){
+    let ret = 0;
+    for (let i = 0; i < lActivity.length - 1;i++){
+      ret += this.calculDistance2PointsGPS(lActivity[i][0],lActivity[i][1],lActivity[i+1][0],lActivity[i+1][1]);
+    };
+    return ret;
+  };
+
+  moyenneFreqCard(freqCard) {
+    let sum = 0;
+    for (let i = 0; i < freqCard.length; i++) {
+      sum = sum + freqCard[i];
+    }
+    return sum/freqCard.length;
   }
-  return sum/freqCard.length;
+
+  minFreqCard(freqs){
+    return Math.min(...freqs);
+  }
+
+  maxFreqCard(freqs){
+    return Math.max(...freqs);
+  }
+
+  temps(heures){
+    String.prototype.toMinutes=function(){return parseInt(this.substr(0,2),10)*60+parseInt(this.substr(3,2),10)};
+    Number.prototype.withLeadingZero=function(){var str=''+this;while(str.length<2) str='0'+str;return str}
+    Number.prototype.toHHMMString=function(){return Math.floor(this/60).withLeadingZero()+':'+(this%60).withLeadingZero();}
+    let min = heures[0].toMinutes();
+    let max = heures[0].toMinutes();
+    for (let i = 1; i < heures.length; i++){
+        if (heures[i].toMinutes() < min){
+            min = heures[i].toMinutes();
+        } else if (heures[i].toMinutes() > max){
+            max = heures[i].toMinutes();
+        }
+    }
+    let duree = (min-max)
+    duree = duree.toHHMMString();
+    return duree;
+  }
 }
 
-function minFreqCard(freqs){
-  return Math.min(...freqs);
-}
-
-function maxFreqCard(freqs){
-  return Math.max(...freqs);
-}
+let instance = new Fonctions();
 
 let obj ={
   activity:{
@@ -59,28 +81,13 @@ let obj ={
   ]
 };
 
-function temps(heures){
-  String.prototype.toMinutes=function(){return parseInt(this.substr(0,2),10)*60+parseInt(this.substr(3,2),10)};
-  Number.prototype.withLeadingZero=function(){var str=''+this;while(str.length<2) str='0'+str;return str}
-  Number.prototype.toHHMMString=function(){return Math.floor(this/60).withLeadingZero()+':'+(this%60).withLeadingZero();}
-  let min = heures[0].toMinutes();
-  let max = heures[0].toMinutes();
-  for (let i = 1; i < heures.length; i++){
-      if (heures[i].toMinutes() < min){
-          min = heures[i].toMinutes();
-      } else if (heures[i].toMinutes() > max){
-          max = heures[i].toMinutes();
-      }
-  }
-  let duree = (min-max)
-  duree = duree.toHHMMString();
-  return duree;
-}
-
-console.log(calculDistanceTrajet(obj));
+console.log(instance.calculDistanceTrajet(obj));
 
 let freqCard = [2,9,3,1];
-console.log(moyenneFreqCard(freqCard));
+console.log(instance.moyenneFreqCard(freqCard));
 
 let heure = ["13:00:00","13:00:10","13:00:25"];
-console.log(temps(heure));
+console.log(instance.temps(heure));
+
+let fonc = new Fonctions();
+module.exports = fonc;
