@@ -28,6 +28,22 @@ function calculDistanceTrajet(lActivity){
   return ret;
 };
 
+function moyenneFreqCard(freqCard) {
+  let sum = 0;
+  for (let i = 0; i < freqCard.length; i++) {
+    sum = sum + freqCard[i];
+  }
+  return sum/freqCard.length;
+}
+
+function minFreqCard(freqs){
+  return Math.min(...freqs);
+}
+
+function maxFreqCard(freqs){
+  return Math.max(...freqs);
+}
+
 let obj ={
   activity:{
     date:"01/09/2022",
@@ -43,5 +59,28 @@ let obj ={
   ]
 };
 
-let result = calculDistanceTrajet(obj);
-console.log(result);
+function temps(heures){
+  String.prototype.toMinutes=function(){return parseInt(this.substr(0,2),10)*60+parseInt(this.substr(3,2),10)};
+  Number.prototype.withLeadingZero=function(){var str=''+this;while(str.length<2) str='0'+str;return str}
+  Number.prototype.toHHMMString=function(){return Math.floor(this/60).withLeadingZero()+':'+(this%60).withLeadingZero();}
+  let min = heures[0].toMinutes();
+  let max = heures[0].toMinutes();
+  for (let i = 1; i < heures.length; i++){
+      if (heures[i].toMinutes() < min){
+          min = heures[i].toMinutes();
+      } else if (heures[i].toMinutes() > max){
+          max = heures[i].toMinutes();
+      }
+  }
+  let duree = (min-max)
+  duree = duree.toHHMMString();
+  return duree;
+}
+
+console.log(calculDistanceTrajet(obj));
+
+let freqCard = [2,9,3,1];
+console.log(moyenneFreqCard(freqCard));
+
+let heure = ["13:00:00","13:00:10","13:00:25"];
+console.log(temps(heure));
