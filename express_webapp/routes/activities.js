@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
     res.render('upload',{liste:tab});
 });
 
-router.showActivity('/',function(req, res) {
+function showActivities (){
     let infosTab = new Array();
     user_dao.findAll(function(rows) {
         let idUser = -1;
@@ -52,5 +52,8 @@ router.showActivity('/',function(req, res) {
         });
         return infosTab;
     });
-});
+};
+module.exports = router;
+
+
 
