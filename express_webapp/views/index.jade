@@ -6,15 +6,32 @@ block content
     link(rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" defer)
     script(type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js")
     script(src="https://kit.fontawesome.com/bdaa21e6ed.js" crossorigin="anonymous" defer)
-    script(src="/js/inscription.js" crossorigin="anonymous" defer)
     body
-      .title-container
-          .span-container
-              span(id="1")
-              span(id="2")
-              span(id="3")
-          a(class='title') SportTrack
-      .main
-          a(href="/users" class="button") Commencer l'expérience 
-            i(class="fa-solid fa-arrow-right")
+        script.
+            if ('#{session}' === 'disconnected') {
+                Toastify({
+                    text: "Vous avez été déconnecté",
+                    duration: 3000,
+                    gravity: "top", 
+                    position: "center",
+                    destination: "/connect",
+                    style: {
+                        background: "#43B929"
+                    }
+                }).showToast();   
+            }  else {
+                console.log("bisou");
+            };
+
+        .title-container
+            .span-container
+                span(id="1")
+                span(id="2")
+                span(id="3")
+            a(class='title') SportTrack
+        .main
+            a(href="/users" class="button") Commencer l'expérience 
+                i(class="fa-solid fa-arrow-right")
+
+
 

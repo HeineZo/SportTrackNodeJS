@@ -1,6 +1,8 @@
 const createError = require('http-errors');
 const express = require('express');
-const multer  = require('multer')
+const app = express();
+const session = require('express-session');
+require('express-dynamic-helpers-patch')(app);
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -10,6 +12,7 @@ const users = require('./routes/users');
 const connect = require('./routes/connect');
 const upload = require('./routes/upload');
 const valid = require('./routes/valid');
+const disconnect = require('./routes/disconnect');
 
 
 
@@ -39,7 +42,8 @@ app.use('/users', users);
 app.use('/connect', connect);
 app.use('/upload', upload);
 app.use('/valid', valid);
-app.use(fileupload());
+app.use('/disconnect', disconnect);
+// app.use(fileupload());
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
