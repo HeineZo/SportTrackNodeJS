@@ -5,9 +5,11 @@ var activity_dao = require('sport-track-db').activity_dao;
 var activity_entry_dao = require('sport-track-db').activity_entry_dao;
 var multer  = require('multer');
 var upload = multer({ dest: 'uploads/' });
+var activities = require('./activities');
 
 router.get('/', function(req, res, next) {
-    res.render('upload');
+    let tab = activities.showActivities();
+    render('upload',{liste : tab});
 });
 
 router.post('/', function(req, res) {
@@ -40,7 +42,8 @@ router.post('/', function(req, res) {
                 });
                 
             }
-            res.render('upload');
+            let tab = activities.showActivities();
+            res.render('upload',{liste:tab});
         }
     });
 });
