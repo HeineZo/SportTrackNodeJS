@@ -1,17 +1,19 @@
 const createError = require('http-errors');
 const express = require('express');
+const app = express();
+const session = require('express-session');
+require('express-dynamic-helpers-patch')(app);
 const fileupload = require("express-fileupload");
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
-// const usersRouter = require('./routes/users');
 const users = require('./routes/users');
 const connect = require('./routes/connect');
 const upload = require('./routes/upload');
+const valid = require('./routes/valid');
 
-const app = express();
 
 
 // view engine setup
@@ -23,12 +25,23 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: 'fd34s@!@dfa453f3DF#$D&W',
+  resave: false,
+  saveUninitialized: false,
+}));
+app.dynamicHelpers({
+  session: function (req, res) {
+    return req.session;
+  }
+});
 
 app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 app.use('/users', users);
 app.use('/connect', connect);
 app.use('/upload', upload);
+app.use('/valid', valid);
 app.use(fileupload());
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

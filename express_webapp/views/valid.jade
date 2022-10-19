@@ -1,0 +1,20 @@
+extends layout
+block content
+    meta(http-equiv="refresh" content="3;/upload")
+    link(href='/stylesheets/title.css' rel='stylesheet')
+    link(href='/stylesheets/index.css' rel='stylesheet')
+    link(href='/stylesheets/valid.css' rel='stylesheet')
+    body
+        .title-container
+            a(class='title')
+                -if (session.user) 
+                    h1 #{text}
+                -else 
+                    h1 Bienvenue !
+                
+
+        .meetup
+            div
+            div
+            div
+            div

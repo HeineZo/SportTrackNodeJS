@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var user_dao = require('sport-track-db').user_dao;
+const express = require('express');
+const router = express.Router();
+const user_dao = require('sport-track-db').user_dao;
 // r_dao.findAll(function(rows) {
 //     //         res.render('connect', {data:rows});
 //     // });
@@ -9,13 +9,21 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', (req, res, next) => {
+    const {email, motDePasse} = req.body;
     let find = false;
+    let i = 0;
     user_dao.findAll(function(rows) {
-        for (let i=0; i < rows.length;i++ && !find) {
-            if (rows[i].email == req.body.email && rows[i].motDePasse == req.body.motDePasse){
+        while(i < rows.length && !find) {
+            if (rows[i].email === email && rows[i].motDePasse === motDePasse){
                 find = true;
-                res.redirect('/upload');
+                req.session.user = {
+                    id: rows[i].id,
+                    prenom: rows[i].prenom
+                };
+                res.redirect('/valid');
+                // res.redirect('/upload');
             };
+            i++;
         };
         if(find == false){
             res.redirect('connect');
