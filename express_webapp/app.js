@@ -1,9 +1,6 @@
 const createError = require('http-errors');
 const express = require('express');
-const app = express();
-const session = require('express-session');
-require('express-dynamic-helpers-patch')(app);
-const fileupload = require("express-fileupload");
+const multer  = require('multer')
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
