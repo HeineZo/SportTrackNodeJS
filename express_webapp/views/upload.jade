@@ -3,10 +3,24 @@ block content
     link(href='/stylesheets/title.css', rel='stylesheet')
     link(href='/stylesheets/upload.css', rel='stylesheet')
     link(rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" defer)
-    script(type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js")
     script(src="/js/upload.js" defer)
+    script(type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js")
     script(src="https://kit.fontawesome.com/bdaa21e6ed.js" crossorigin="anonymous" defer)
     body
+        script.
+            if ('#{modified}') {
+                Toastify({
+                    text: "Vos informations ont bien été modifiées",
+                    duration: 3000,
+                    destination: "/update",
+                    gravity: "top", 
+                    position: "center", // `left`, `center` or `right`
+                    style: {
+                        background: "#43B929"
+                    }
+                    }).showToast();          
+            }             
+
         nav
             .logo
                 a(class="title") 
@@ -14,7 +28,7 @@ block content
                     span SportTrack
 
             .menu
-                a(href="/user_update") 
+                a(href="/update") 
                     i(class="fa-solid fa-user-pen")
                 a(href="/disconnect")
                     i(class="fa-solid fa-right-from-bracket")
@@ -58,19 +72,19 @@ block content
                             th<i class="fa-solid fa-arrows-left-right-to-line" title="Distance parcourue"></i>
                             th<i class="fa-solid fa-heart-pulse" title="Moyenne de fréquence cardiaque"></i>
                             th<i class="fa-solid fa-chart-simple" title="Minimum et maximum de battements par minute"></i>
-                        script
-                            if (typeof data['liste'] !== 'undefined') {
-                                data = data['liste'];
-                                for (i = 0; i < data.length;i++) {
-                                    <tr>
-                                        for (let j = 0; let j < data[i].length; j++) {
-                                            <td><?php 
-                                        console.log(data[i][j]);
-                                        ?></td>
-                                                            <?php 
-                                    }
-                                    ?>
-                                                        </tr>
+                        //- script
+                        //-     if (typeof data['liste'] !== 'undefined') {
+                        //-         data = data['liste'];
+                        //-         for (i = 0; i < data.length;i++) {
+                        //-             <tr>
+                        //-                 for (let j = 0; let j < data[i].length; j++) {
+                        //-                     <td><?php 
+                        //-                 console.log(data[i][j]);
+                        //-                 ?></td>
+                        //-                                     <?php 
+                        //-             }
+                        //-             ?>
+                        //-                                 </tr>
                             
 
 

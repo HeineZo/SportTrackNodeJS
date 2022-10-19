@@ -21,12 +21,11 @@ router.post('/', (req, res, next) => {
                     prenom: rows[i].prenom
                 };
                 res.redirect('/valid');
-                // res.redirect('/upload');
             };
             i++;
         };
         if(find == false){
-            res.redirect('connect');
+            res.render('connect', {valid: false});
         };
     });
 });

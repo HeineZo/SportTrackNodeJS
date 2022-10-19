@@ -8,8 +8,8 @@ var upload = multer({ dest: 'uploads/' });
 var activities = require('./activities');
 
 router.get('/', function(req, res, next) {
-    let tab = activities.showActivities();
-    render('upload',{liste : tab});
+    // let tab = activities.showActivities();
+    res.render('upload',{});
 });
 
 router.post('/', function(req, res) {
