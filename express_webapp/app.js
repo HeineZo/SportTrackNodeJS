@@ -1,6 +1,6 @@
 const createError = require('http-errors');
 const express = require('express');
-const fileupload = require("express-fileupload");
+const multer  = require('multer')
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -29,7 +29,6 @@ app.use('/', indexRouter);
 app.use('/users', users);
 app.use('/connect', connect);
 app.use('/upload', upload);
-app.use(fileupload());
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
