@@ -8,6 +8,7 @@ block content
     script(src="https://kit.fontawesome.com/bdaa21e6ed.js" crossorigin="anonymous" defer)
     body
         script.
+            console.log('#{liste}');
             if ('#{modified}') {
                 Toastify({
                     text: "Vos informations ont bien été modifiées",
@@ -68,23 +69,32 @@ block content
                                 <i class="fa-regular fa-calendar" title="Date de l'activité"></i>
                             th
                                 <i class="fa-solid fa-house" title="Heure de départ"></i>
-                            th<i class="fa-regular fa-clock" title="Durée de l'activité"></i>
-                            th<i class="fa-solid fa-arrows-left-right-to-line" title="Distance parcourue"></i>
-                            th<i class="fa-solid fa-heart-pulse" title="Moyenne de fréquence cardiaque"></i>
-                            th<i class="fa-solid fa-chart-simple" title="Minimum et maximum de battements par minute"></i>
-                        //- script
-                        //-     if (typeof data['liste'] !== 'undefined') {
-                        //-         data = data['liste'];
-                        //-         for (i = 0; i < data.length;i++) {
-                        //-             <tr>
-                        //-                 for (let j = 0; let j < data[i].length; j++) {
-                        //-                     <td><?php 
-                        //-                 console.log(data[i][j]);
-                        //-                 ?></td>
-                        //-                                     <?php 
-                        //-             }
-                        //-             ?>
-                        //-                                 </tr>
+                            th
+                                <i class="fa-regular fa-clock" title="Durée de l'activité"></i>
+                            th
+                                <i class="fa-solid fa-arrows-left-right-to-line" title="Distance parcourue"></i>
+                            th
+                                <i class="fa-solid fa-heart-pulse" title="Moyenne de fréquence cardiaque"></i>
+                            th
+                                <i class="fa-solid fa-chart-simple" title="Minimum et maximum de battements par minute"></i>
+                        script.
+                            //- if (typeof liste['liste'] !== 'undefined') {
+                            //-     liste = liste['liste'];
+                            //-     for (i = 0; i < liste.length;i++) {
+                            //-         <tr>
+                            //-             for (let j = 0; let j < liste[i].length; j++) {
+                            //-                 <td><?php 
+                            //-             console.log(liste[i][j]);
+                            //-             ?></td>
+                        //- if (isset($data['liste'])) {
+                        //- $data = $data['liste'];
+ 
+                        //-  for($i = 0; $i < count($data); $i++) { ?>
+                        //-     <tr>
+                        //-         <?php for ($j = 0; $j < count($data[$i]); $j++) { ?>
+                        //-             <td><?php echo $data[$i][$j]; ?></td>
+                        //-         <?php } ?>
+                        //-     </tr>
                             
 
 

@@ -46,7 +46,6 @@ const ActivityDAO = function(){
             if (err) {
                 console.log(err);
             } else {
-                console.log(data);
                 callback(data);
             }
         });

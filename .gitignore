@@ -1,3 +1,4 @@
 node_modules
 express_webapp/node_modules
+express_webapp/uploads
 sport-track-db/node_modules
