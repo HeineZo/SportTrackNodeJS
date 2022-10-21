@@ -77,7 +77,6 @@ block content
                                 <i class="fa-solid fa-heart-pulse" title="Moyenne de fréquence cardiaque"></i>
                             th
                                 <i class="fa-solid fa-chart-simple" title="Minimum et maximum de battements par minute"></i>
-                        script.
                             //- if (typeof liste['liste'] !== 'undefined') {
                             //-     liste = liste['liste'];
                             //-     for (i = 0; i < liste.length;i++) {
@@ -95,7 +94,8 @@ block content
                         //-             <td><?php echo $data[$i][$j]; ?></td>
                         //-         <?php } ?>
                         //-     </tr>
-                            
-
-
+                        each activity in liste
+                            tr
+                                each val in activity
+                                    td= val
                     a(href='/upload?reset=True' class="delete" title="Cette action est irréversible") Réinitialiser
