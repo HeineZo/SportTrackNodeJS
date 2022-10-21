@@ -16,7 +16,6 @@ module.exports = function showActivities(userId, callback){
 
         for (let j=0; j < rows.length;j++) {
             activity_entry_dao.findByActivity(rows[j].id, (rows2) => {
-                console.log(rows2);
                 let heure = rows2[0].heure;
                 let temps = [];
                 for (let k = 0; k < rows2.length; k++) {
