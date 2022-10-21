@@ -47,26 +47,25 @@ const Fonctions = function() {
   }
 
   this.temps = (heures) => {
-    String.prototype.toMinutes = function(){
-      return parseInt(this.substr(0,2),10)*60+parseInt(this.substr(3,2),10)
-    };
+    function getDateFromHours(time) {
+      time = time.split(':');
+      let now = new Date();
+      return new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...time);
+    }
     function leadingZero(i) {
       return (i < 10) ? "0" + i : "" + i;
-  }
-    Number.prototype.toHHMMString = function(){
-      return Math.floor(this/60).withLeadingZero()+':'+(this%60).withLeadingZero();
-    };
+    }
 
-    let min = new Date(heures[0]);
-    let max = new Date(heures[0]);
+    let min = getDateFromHours(heures[0]);
+    let max = getDateFromHours(heures[0]);
     for (let i = 1; i < heures.length; i++){
-        if (new Date(heures[i]) < min){
-            min = new Date(heures[i]);
-        } else if (new Date(heures[i]) > max){
-            max = new Date(heures[i]);
+        if (getDateFromHours(heures[i]) < min){
+            min = getDateFromHours(heures[i]);
+        } else if (getDateFromHours(heures[i]) > max){
+            max = getDateFromHours(heures[i]);
         }
     }
-    let duree = (min-max)
+    let duree = new Date(Math.abs(max-min));
     duree = `${leadingZero(duree.getMinutes())}:${leadingZero(duree.getSeconds())}`;
     return duree;
   }
