@@ -43,7 +43,7 @@ const ActivityEntryDAO = function(){
 
     // Check
     this.findByActivity = function(key, callback){
-        db.all('select * from Donnee WHERE lActivite = ? ORDER BY id;', key, (err, data) => {
+        db.all('select * from Donnee WHERE lActivite = ? ORDER BY heure,id;', key, (err, data) => {
             if (err) {
                 console.log(err);
             } else {

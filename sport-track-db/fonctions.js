@@ -66,7 +66,7 @@ const Fonctions = function() {
         }
     }
     let duree = new Date(Math.abs(max-min));
-    duree = `${leadingZero(duree.getMinutes())}:${leadingZero(duree.getSeconds())}`;
+    duree = `${leadingZero(duree.getHours()) -1}:${leadingZero(duree.getMinutes())}:${leadingZero(duree.getSeconds())}`;
     return duree;
   }
 }
