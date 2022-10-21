@@ -21,7 +21,7 @@ module.exports = function showActivities(userId, callback){
                 for (let k = 0; k < rows2.length; k++) {
                     temps[k] = rows2[k].heure;
                 }
-                let leTemps = fonctions_calcul.temps(temps);
+                // let leTemps = fonctions_calcul.temps(temps);
 
                 let latLong = [];
                 for (let k = 0; k < rows2.length; k++) {
@@ -29,13 +29,13 @@ module.exports = function showActivities(userId, callback){
                 }
                 let distance = fonctions_calcul.calculDistanceTrajet(latLong);
 
-                let freqCard = [];
+                let freqTab = [];
                 for (let k = 0; k < rows2.length; k++) {
-                    freqCard [k] = rows2[k].cardio_frequency;
+                    freqTab[k] = rows2[k].freqCard;
                 }
-                let moyenneFreqCard = fonctions_calcul.moyenneFreqCard(freqCard);
-                let minMaxFreq = fonctions_calcul.minFreqCard(freqCard) + ' - '+ fonctions_calcul.maxFreqCard(freqCard);
-                infosTab.push([rows[j].description,rows[j].date,heure,leTemps,distance,moyenneFreqCard,minMaxFreq]);
+                let moyenneFreqCard = fonctions_calcul.moyenneFreqCard(freqTab);
+                let minMaxFreq = fonctions_calcul.minFreqCard(freqTab) + ' - '+ fonctions_calcul.maxFreqCard(freqTab);
+                infosTab.push([rows[j].description,rows[j].date,heure,'10:00',distance,moyenneFreqCard,minMaxFreq]);
                 finishedCount++;
                 if (finishedCount == rows.length) {
                     callback(infosTab);
