@@ -23,7 +23,7 @@ router.post('/', function(req, res) {
             const fs = require('fs')
             let fichier = fs.readFileSync(req.file.path);
             let json = JSON.parse(fichier);
-            let userId = 1;
+            let userId = req.session.user.id;
             let activityData = [json.activity.date,json.activity.description,userId];
             activity_dao.insert(activityData,()=>{});
             for (i = 0; i < json.data.length; i++){
@@ -35,7 +35,7 @@ router.post('/', function(req, res) {
                 let idActivite = -1;
                 activity_dao.findAll(function(rows) {
                     for (let j=0; j < rows.length;j++) {
-                        if (rows[j].lUtilisateur == 1 /*à changer quand y'aura les sessions*/){
+                        if (rows[j].lUtilisateur == req.session.user.id){
                             idActivite = rows[j].id;
                         }
                     };

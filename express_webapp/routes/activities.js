@@ -10,9 +10,13 @@ module.exports = function showActivities(userId, callback){
 
     activity_dao.findByUser(userId, (rows) => {
         let finishedCount = 0;
+        if (rows.length === 0) {
+            callback(infosTab);
+        }
 
         for (let j=0; j < rows.length;j++) {
             activity_entry_dao.findByActivity(rows[j].id, (rows2) => {
+                console.log(rows2);
                 let heure = rows2[0].heure;
                 let temps = [];
                 for (let k = 0; k < rows2.length; k++) {
@@ -34,11 +38,11 @@ module.exports = function showActivities(userId, callback){
                 let minMaxFreq = fonctions_calcul.minFreqCard(freqCard) + ' - '+ fonctions_calcul.maxFreqCard(freqCard);
                 infosTab.push([rows[j].description,rows[j].date,heure,leTemps,distance,moyenneFreqCard,minMaxFreq]);
                 finishedCount++;
+                if (finishedCount == rows.length) {
+                    callback(infosTab);
+                }
             });
         };
-        if (finishedCount == rows.length) {
-            callback(infosTab);
-        }
     });
 };
 
