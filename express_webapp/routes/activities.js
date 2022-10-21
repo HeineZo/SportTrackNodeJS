@@ -21,7 +21,7 @@ module.exports = function showActivities(userId, callback){
                 for (let k = 0; k < rows2.length; k++) {
                     temps[k] = rows2[k].heure;
                 }
-                // let leTemps = fonctions_calcul.temps(temps);
+                let leTemps = fonctions_calcul.temps(temps);
 
                 let latLong = [];
                 for (let k = 0; k < rows2.length; k++) {
@@ -35,7 +35,7 @@ module.exports = function showActivities(userId, callback){
                 }
                 let moyenneFreqCard = fonctions_calcul.moyenneFreqCard(freqTab);
                 let minMaxFreq = fonctions_calcul.minFreqCard(freqTab) + ' - '+ fonctions_calcul.maxFreqCard(freqTab);
-                infosTab.push([rows[j].description,rows[j].date,heure,'10:00',distance,moyenneFreqCard,minMaxFreq]);
+                infosTab.push([rows[j].description,rows[j].date,heure,leTemps,distance,moyenneFreqCard,minMaxFreq]);
                 finishedCount++;
                 if (finishedCount == rows.length) {
                     callback(infosTab);
