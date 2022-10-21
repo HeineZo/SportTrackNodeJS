@@ -8,8 +8,10 @@ var upload = multer({ dest: 'uploads/' });
 const activities = require('./activities.js');
 
 router.get('/', function(req, res, next) {
-    let tab = activities();
-    res.render('upload',{liste: tab});
+    if (req.query.reset) {
+        activity_dao.deleteByUser(req.session.user.id);
+    }
+    activities(req.session.user.id, tab => res.render('upload', {liste: tab}));
 });
 
 router.post('/', function(req, res) {
@@ -42,7 +44,7 @@ router.post('/', function(req, res) {
                 });
                 
             }
-            activities(tab => res.render('upload', {liste: tab}));
+            activities(req.session.user.id, tab => res.render('upload', {liste: tab}));
         }
     });
 });

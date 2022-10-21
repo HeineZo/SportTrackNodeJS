@@ -1,7 +1,7 @@
 let db = require('./sqlite_connection');
 
 const ActivityDAO = function(){
-    // Check
+
     this.insert = function(values, callback){
         db.run('INSERT INTO Activite(date,description,lUtilisateur) VALUES (?,?,?);', values, function(err) {
             if (err) {
@@ -13,11 +13,15 @@ const ActivityDAO = function(){
         });
     };
 
-    // Check
-    this.delete = function(values, callback){
-        db.run('DELETE FROM Activite WHERE ID = ?;', values, callback);
-    };
 
+    this.delete = function(activityId, callback){
+        db.run('DELETE FROM Activite WHERE ID = ?;', activityId, callback);
+    };    
+    
+    this.deleteByUser = function(userId, callback){
+        db.run('DELETE FROM Activite WHERE lUtilisateur = ?;', userId, callback);
+    };
+        
     this.update = function(values, callback){
         db.run('update Activite set date = ?, description = ?, lUtilisateur = ? where id = ? ', values, function(err) {
             if (err) {
@@ -29,7 +33,7 @@ const ActivityDAO = function(){
         });
     };
 
-    // Check
+
     this.findAll = function(callback){
         db.all('SELECT * FROM Activite ORDER BY id', (err, data) => {
             if (err) {
@@ -40,7 +44,7 @@ const ActivityDAO = function(){
         });
     };
 
-    // Check
+
     this.findByUser = function(key, callback){
         db.all('select * from Activite where lUtilisateur = ?', key, (err, data) => {
             if (err) {

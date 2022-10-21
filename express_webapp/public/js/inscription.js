@@ -9,7 +9,9 @@
 
 const input = document.querySelectorAll('input');
 const date = document.getElementById('dateDeNaissance');
-date.max = new Date().toISOString().split("T")[0];
+if (date) {
+    date.max = new Date().toISOString().split("T")[0];
+}
 
 function previous() {
     const basic = document.querySelector('.basic');
