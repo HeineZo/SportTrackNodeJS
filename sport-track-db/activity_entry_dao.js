@@ -53,7 +53,7 @@ const ActivityEntryDAO = function(){
     };
 
     this.deleteByActivity = function(activityId, callback){
-        db.run('DELETE FROM Donnee WHERE lUtilisateur = ?;', activityId, callback);
+        db.run('DELETE FROM Donnee WHERE lActivite = ?;', activityId, callback);
     };
 }
 let dao = new ActivityEntryDAO();

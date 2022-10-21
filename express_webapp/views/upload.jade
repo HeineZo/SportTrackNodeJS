@@ -46,7 +46,7 @@ block content
                 .glass
                     h1 Charger vos données
                     form(enctype="multipart/form-data" method="post" action= "/upload" id="upload")
-                        input(type="file" id="file" accept=".json" name="file")
+                        input(type="file" id="file" accept=".json" hidden ="true" name="file")
                         button(type="button" class="choose" id="fileBtn") Choisir un fichier
                         span(id="fileTxt" class="choose-text") Vous n'avez importé aucun fichier 
                         button(type="submit" class="button") Charger

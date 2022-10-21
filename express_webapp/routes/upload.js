@@ -9,6 +9,16 @@ const activities = require('./activities.js');
 
 router.get('/', function(req, res, next) {
     if (req.query.reset) {
+        activity_dao.findByUser(req.session.user.id,function(rows) {
+            let idActivities = [];
+            for (let i=0; i<rows.length; i++) {
+                idActivities.push(rows[i].id);
+            }
+
+            for (let i = 0; i < idActivities.length; i++) {
+                activity_entry_dao.deleteByActivity(idActivities[i]);
+            }
+        });
         activity_dao.deleteByUser(req.session.user.id);
     }
     activities(req.session.user.id, tab => res.render('upload', {liste: tab}));
