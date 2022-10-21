@@ -1,0 +1,12 @@
+{
+    "activity":{
+      "date":"01/09/2022",
+      "description": "Maison -> boulangerie"
+    },
+    "data":[
+      {"time":"12:48:21","cardio_frequency":64,"latitude":47.819791,"longitude":-2.808294,"altitude":18},
+      {"time":"12:50:56","cardio_frequency":78,"latitude":47.818139,"longitude":-2.807488,"altitude":20},
+      {"time":"12:55:21","cardio_frequency":90,"latitude":47.818250,"longitude":-2.812127,"altitude":12},
+      {"time":"15:00:44","cardio_frequency":100,"latitude":47.817744,"longitude":-2.812367,"altitude":12}
+    ]
+}
